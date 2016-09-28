@@ -300,6 +300,12 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 
+" workaround for ctrl-h not working inside tmux session
+ if has('nvim')
+     nmap <BS> <C-W>h
+ endif
+
+
 nnoremap Y y$
 
 " leader and / to remove highlighting from the search term
