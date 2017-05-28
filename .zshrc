@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/virtualanup/.oh-my-zsh
+export ZSH=/home/virtualanup/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -86,5 +86,12 @@ source $ZSH/oh-my-zsh.sh
 if [ -f ~/.pzshrc ]; then
 	source ~/.pzshrc
 fi
+alias betty="~/builds/betty/main.rb"
+alias hal="python3 -m hal"
+alias rg="ranger"
+export PATH="$PATH:/home/virtualanup/anaconda2/bin"
+export EDITOR=nvim
+export dockerclean=docker rm $(docker ps -a -q -f status=exited)
+
 export WORKON_HOME=~/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
