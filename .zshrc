@@ -87,11 +87,9 @@ if [ -f ~/.pzshrc ]; then
 	source ~/.pzshrc
 fi
 alias betty="~/builds/betty/main.rb"
-alias hal="python3 -m hal"
 alias rg="ranger"
 export PATH="$PATH:/home/virtualanup/anaconda2/bin"
 export EDITOR=nvim
-export dockerclean=docker rm $(docker ps -a -q -f status=exited)
 
 export WORKON_HOME=~/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
