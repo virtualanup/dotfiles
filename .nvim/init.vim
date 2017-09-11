@@ -220,6 +220,18 @@ Plug 'scrooloose/syntastic'
   let g:syntastic_enable_elixir_checker = 0
 " }}}
 
+" Vim clang format
+Plug 'rhysd/vim-clang-format'
+" {{{
+let g:clang_format#code_style = "LLVM"
+let g:clang_format#style_options = {
+            \ "AccessModifierOffset" : -4,
+            \ "AllowShortIfStatementsOnASingleLine" : "false"
+            \}
+autocmd FileType c,cpp ClangFormatAutoEnable
+" }}}
+
+
 Plug 'scrooloose/nerdcommenter'
 Plug 'michaeljsmith/vim-indent-object'
 
@@ -420,7 +432,8 @@ au FileType html setl sw=2 sts=2 et
 au FileType htmldjango setl sw=2 sts=2 et
 :command Thtml :%!tidy -q -i --show-errors 0
 au FileType python setlocal formatprg=autopep8\ -
-noremap <Leader>i gggqG
+autocmd FileType python noremap <Leader>i gggqG
+autocmd Filetype c,cpp noremap <Leader>i :ClangFormat<CR>
 au BufNewFile,BufRead *.html set filetype=htmldjango
 
 " file is large from 10mb
