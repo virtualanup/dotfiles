@@ -86,10 +86,11 @@ source $ZSH/oh-my-zsh.sh
 if [ -f ~/.pzshrc ]; then
 	source ~/.pzshrc
 fi
-alias betty="~/builds/betty/main.rb"
 alias rg="ranger"
 export PATH="$PATH:/home/virtualanup/anaconda2/bin"
 export EDITOR=nvim
 
 export WORKON_HOME=~/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
