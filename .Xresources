@@ -16,6 +16,10 @@ URxvt.iconFile: /usr/share/icons/gnome-colors-common/24x24/apps/terminal.png
 !! Larger history limit
 urxvt.saveLines: 1000000
 
+!! perl extension
+URxvt*perl-ext-common: fullscreen
+URxvt*keysym.F11:   perl:fullscreen:switch
+
 !!
 !! URLs
 !!
@@ -46,14 +50,6 @@ URxvt.letterSpace: 0
 
 URxvt.font:     xft:bitstream vera sans mono:size=12:antialias=true
 URxvt.boldFont: xft:bitstream vera sans mono:bold:size=12:antialias=true
-!!URxvt*font:xft:xos4Terminus:size=12, \
-!!    xft:unifont:medium
-!!URxvt*boldFont:xft:xos4Terminus:size=12, \
-!!    xft:unifont:medium
-!URxvt*font:xft:Terminus:size=12, \
-!    xft:unifont:medium
-!URxvt*boldFont:xft:Terminus:size=12, \
-!    xft:unifont:medium
 
 !!
 !! Select text with the keyboard
