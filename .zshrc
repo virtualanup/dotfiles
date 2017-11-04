@@ -68,6 +68,7 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
+export EDITOR="nvim"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -83,14 +84,28 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-if [ -f ~/.pzshrc ]; then
-	source ~/.pzshrc
-fi
+
+# vim keybindings
+bindkey -v
+
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^r' history-incremental-search-backward
+
+# Use  jk to exit insert mode
+bindkey jk vi-cmd-mode
+
 alias rg="ranger"
-export PATH="$PATH:/home/virtualanup/anaconda2/bin"
-export EDITOR=nvim
+
+alias vi="nvim"
+alias vim="nvim"
+alias dockerclear="docker rm $(docker ps -a -q -f status=exited)"
 
 export WORKON_HOME=~/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
+
+[ -f ~/.localzshrc ] && source ~/.localzshrc || true
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
