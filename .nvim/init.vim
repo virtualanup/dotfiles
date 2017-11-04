@@ -284,6 +284,7 @@ Plug 'tpope/vim-sensible'
 Plug 'easymotion/vim-easymotion'
 Plug 'justinmk/vim-gtfo'
 Plug 'bling/vim-bufferline'
+Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
 
 let g:gruvbox_contrast_dark='hard'
