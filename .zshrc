@@ -109,3 +109,7 @@ source /usr/bin/virtualenvwrapper.sh
 [ -f ~/.localzshrc ] && source ~/.localzshrc || true
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+#Plugins
+source <(antibody init)
+antibody bundle < ~/.config/zsh/.zsh_plugins
