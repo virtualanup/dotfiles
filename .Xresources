@@ -17,8 +17,16 @@ URxvt.iconFile: /usr/share/icons/gnome-colors-common/24x24/apps/terminal.png
 urxvt.saveLines: 1000000
 
 !! perl extension
-URxvt*perl-ext-common: fullscreen
+URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select,fullscreen
+
+URxvt.clipboard.copycmd:  	xsel -ib
+URxvt.clipboard.pastecmd: 	xsel -ob
+
 URxvt*keysym.F11:   perl:fullscreen:switch
+
+URxvt.keysym.M-c:   perl:clipboard:copy
+URxvt.keysym.M-v:   perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
 
 !!
 !! URLs
