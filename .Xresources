@@ -70,19 +70,22 @@ URxvt.keysym.End: \033[4~
 URxvt.keysym.KP_Home: \033[1~
 URxvt.keysym.KP_End:  \033[4~
 
-!!
-!! Cursor theme
-!!
 
-Xcursor.theme: Vanilla-DMZ
+! -----------------------------------------------------------------------------
+! File: gruvbox-dark.xresources
+! Description: Retro groove colorscheme generalized
+! Author: morhetz <morhetz@gmail.com>
+! Source: https://github.com/morhetz/gruvbox-generalized
+! Last Modified: 6 Sep 2014
+! -----------------------------------------------------------------------------
 
 ! hard contrast: *background: #1d2021
-*background: #181818
+*background: #282828
 ! soft contrast: *background: #32302f
 *foreground: #ebdbb2
 ! Black + DarkGrey
-*color0:  #181818
-*color8:  #908374
+*color0:  #282828
+*color8:  #928374
 ! DarkRed + Red
 *color1:  #cc241d
 *color9:  #fb4934

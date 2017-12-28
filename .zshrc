@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/virtualanup/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -101,15 +101,19 @@ alias rg="ranger"
 
 alias vi="nvim"
 alias vim="nvim"
-alias dockerclear="docker rm $(docker ps -a -q -f status=exited)"
 
-export WORKON_HOME=~/.virtualenvs
-source /usr/bin/virtualenvwrapper.sh
+if [ -e /usr/bin/virtualenvwrapper.sh ]
+then
+    export WORKON_HOME=~/.virtualenvs
+    source /usr/bin/virtualenvwrapper.sh
+fi
 
 [ -f ~/.localzshrc ] && source ~/.localzshrc || true
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 #Plugins
-source <(antibody init)
-antibody bundle < ~/.config/zsh/.zsh_plugins
+if hash antibody 2>/dev/null; then
+    source <(antibody init)
+    antibody bundle < ~/.config/zsh/.zsh_plugins
+fi
