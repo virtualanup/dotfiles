@@ -102,6 +102,8 @@ alias rg="ranger"
 alias vi="nvim"
 alias vim="nvim"
 
+VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3'
+
 if [ -e /usr/bin/virtualenvwrapper.sh ]
 then
     export WORKON_HOME=~/.virtualenvs
