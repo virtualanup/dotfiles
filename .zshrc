@@ -107,6 +107,12 @@ then
     export WORKON_HOME=~/.virtualenvs
     source /usr/bin/virtualenvwrapper.sh
 fi
+if [ -e /usr/local/bin/virtualenvwrapper.sh ]
+then
+    export WORKON_HOME=~/.virtualenvs
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
+
 
 [ -f ~/.localzshrc ] && source ~/.localzshrc || true
 
