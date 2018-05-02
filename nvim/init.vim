@@ -262,15 +262,8 @@ Plug 'kshenoy/vim-signature'
 
 
 Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " {{{
-let g:airline_left_sep  = '▓▒░'
-let g:airline_right_sep = '░▒▓'
-let g:airline_section_z = '%2p%% %2l/%L:%2v'
-let g:airline#extensions#syntastic#enabled = 0
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline_exclude_preview = 1
-
-let g:airline_section_c = '%t'
 " }}}
 
 
