@@ -44,4 +44,31 @@ fi
 
 if uname -a | grep -qi 'ARCH'; then
     echo "Arch Linux detected"
+
+    echo "Updating pacman database"
+    sudo pacman -Syy
+
+    echo "Installing htop"
+    sudo pacman -S --noconfirm htop
+
+    echo "Installing git"
+    sudo pacman -S --noconfirm git
+
+    echo "Installing zsh"
+    sudo pacman -S --noconfirm zsh
+
+    echo "Setting zsh as default shell"
+    sudo chsh -s "$(which zsh)" "$(whoami)"
+
+    echo 'Installing powerline-fonts...'
+
+    git clone https://github.com/powerline/fonts.git
+    cd fonts
+    ./install.sh
+    cd ..
+    rm -rf fonts
+
+    echo 'Installing tmux...'
+    sudo pacman -S --noconfirm tmux
+
 fi

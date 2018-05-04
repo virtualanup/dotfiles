@@ -85,6 +85,9 @@ export EDITOR="nvim"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# vim keybindings
+# bindkey -v
+
 bindkey '^P' up-history
 bindkey '^N' down-history
 bindkey '^h' backward-delete-char
@@ -106,6 +109,7 @@ then
     export WORKON_HOME=~/.virtualenvs
     source /usr/bin/virtualenvwrapper.sh
 fi
+
 if [ -e /usr/local/bin/virtualenvwrapper.sh ]
 then
     export WORKON_HOME=~/.virtualenvs

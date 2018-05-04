@@ -2,7 +2,7 @@
 ! URxvt
 !
 URxvt*termName: rxvt-256color
-URxvt.geometry: 80x35
+URxvt.geometry: 80x40
 URxvt.cursorUnderline: false
 URxvt.cursorBlink: false
 URxvt*scrollBar: false
