@@ -157,7 +157,7 @@ Plug 'vim-scripts/sessionman.vim'
 
 "Text management plugins
 Plug 'tpope/vim-surround'
-
+Plug 'tpope/vim-unimpaired'
 Plug 'rhysd/clever-f.vim'
 " {{{
     let g:clever_f_across_no_line = 1
