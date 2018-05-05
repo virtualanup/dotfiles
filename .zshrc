@@ -102,7 +102,15 @@ alias rg="ranger"
 alias vi="nvim"
 alias vim="nvim"
 
+if [ -e /usr/bin/python3 ]
+then
 VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3'
+fi
+
+if [ -e /usr/local/bin/python3 ]
+then
+VIRTUALENVWRAPPER_PYTHON='/usr/local/bin/python3'
+fi
 
 if [ -e /usr/bin/virtualenvwrapper.sh ]
 then
