@@ -31,6 +31,15 @@ set tabstop=4
 set number
 set noswapfile
 
+"remove menu bar
+set guioptions-=m
+  "remove toolbar
+set guioptions-=T
+"remove right-hand scroll bar
+set guioptions-=r
+"remove left-hand scroll bar
+set guioptions-=L
+
 " Dark background
 set background=dark
 " Automatically indent on new lines
@@ -63,7 +72,7 @@ set matchpairs+=<:>
 " PEP-8 Friendly
 au FileType py set textwidth=79
 
-set guifont=Monaco\ 13
+set guifont=Monaco:h13
 " No extra spaces between rows
 set linespace=0
 
@@ -104,8 +113,6 @@ set whichwrap=b,s,h,l,<,>,[,]
 set foldenable
 
 set list
-" Highlight problematic whitespace
-set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
 
 " Only show 15 tabs
 set tabpagemax=15
@@ -128,8 +135,6 @@ endif
 call plug#begin('~/.vim/plugged')
 
 "Color schemes
-Plug 'cschlueter/vim-wombat'
-Plug 'scwood/vim-hybrid'
 Plug 'morhetz/gruvbox'
 
 " File management
@@ -152,6 +157,7 @@ Plug 'vim-scripts/sessionman.vim'
 
     " For opening files with fzf.
     map <C-p> :GFiles<CR>
+    map <C-y> :Files<CR>
     let g:fzf_layout = { 'down': '~35%' }
 " }}}
 
@@ -167,12 +173,14 @@ Plug 'rhysd/clever-f.vim'
 Plug 'ntpeters/vim-better-whitespace'
 " {{{
     " Remove trailing whitespace on save
-    autocmd BufWritePre * StripWhitespace
+    let g:better_whitespace_enabled=1
+    let g:strip_whitespace_on_save=1
 " }}}
 
 
 Plug 'Yggdroot/indentLine'
 " {{{
+"
     let g:indentLine_color_tty_light = 7 " (default: 4)
     let g:indentLine_color_dark = 1 " (default: 2)
     let g:indentLine_char = '¦'
@@ -181,41 +189,18 @@ Plug 'Yggdroot/indentLine'
 " }}}
 
 Plug 'jiangmiao/auto-pairs'
-Plug 'terryma/vim-expand-region'
 
 function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-" {{{
-    let g:deoplete#enable_at_startup = 1
-" }}}
 
-"Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 
 " Programming Language plugins
-Plug 'scrooloose/syntastic'
-" {{{
-  let g:syntastic_enable_signs          = 1
-  let g:syntastic_enable_highlighting   = 1
-  let g:syntastic_cpp_check_header      = 1
-  let g:syntastic_enable_balloons       = 1
-  let g:syntastic_echo_current_error    = 1
-  let g:syntastic_check_on_wq           = 0
-  let g:syntastic_error_symbol          = '✘'
-  let g:syntastic_warning_symbol        = '!'
-  let g:syntastic_style_error_symbol    = ':('
-  let g:syntastic_style_warning_symbol  = ':('
-  let g:syntastic_vim_checkers          = ['vint']
-  let g:syntastic_elixir_checkers       = ['elixir']
-  let g:syntastic_python_checkers       = ['flake8']
-  let g:syntastic_javascript_checkers   = ['eslint']
-  let g:syntastic_enable_elixir_checker = 0
-" }}}
+Plug 'w0rp/ale'
 
 " Vim clang format
 Plug 'rhysd/vim-clang-format'
+
 " {{{
 let g:clang_format#code_style = "LLVM"
 let g:clang_format#style_options = {
@@ -232,40 +217,11 @@ Plug 'michaeljsmith/vim-indent-object'
 " Visual
 Plug 'lilydjwg/colorizer'
 
-Plug 'kshenoy/vim-signature'
-" {{{
-  let g:SignatureMarkerTextHL = 'Typedef'
-  let g:SignatureMap = {
-    \ 'Leader'             :  "m",
-    \ 'PlaceNextMark'      :  "m,",
-    \ 'ToggleMarkAtLine'   :  "m.",
-    \ 'PurgeMarksAtLine'   :  "m-",
-    \ 'DeleteMark'         :  "dm",
-    \ 'PurgeMarks'         :  "m<Space>",
-    \ 'PurgeMarkers'       :  "m<BS>",
-    \ 'GotoNextLineAlpha'  :  "",
-    \ 'GotoPrevLineAlpha'  :  "",
-    \ 'GotoNextSpotAlpha'  :  "",
-    \ 'GotoPrevSpotAlpha'  :  "",
-    \ 'GotoNextLineByPos'  :  "]'",
-    \ 'GotoPrevLineByPos'  :  "['",
-    \ 'GotoNextSpotByPos'  :  "]`",
-    \ 'GotoPrevSpotByPos'  :  "[`",
-    \ 'GotoNextMarker'     :  "[+",
-    \ 'GotoPrevMarker'     :  "[-",
-    \ 'GotoNextMarkerAny'  :  "]=",
-    \ 'GotoPrevMarkerAny'  :  "[=",
-    \ 'ListLocalMarks'     :  "m/",
-    \ 'ListLocalMarkers'   :  "m?"
-    \ }
-" }}}
-
-
-Plug 'bling/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-" {{{
-" }}}
-
+Plug 'itchyny/lightline.vim'
+set noshowmode
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ }
 
 " Version control
 Plug 'tpope/vim-fugitive'
@@ -276,8 +232,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'easymotion/vim-easymotion'
 Plug 'justinmk/vim-gtfo'
-Plug 'bling/vim-bufferline'
-Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
 
 let g:gruvbox_contrast_dark='hard'
@@ -346,6 +300,7 @@ vnoremap . :normal .<CR>
 cabbrev qq qa
 cabbrev R !python3 %
 
+set clipboard=unnamed
 set clipboard+=unnamedplus
 
 " Yank text to the clipboard
@@ -405,14 +360,6 @@ map <Leader>k <Plug>(easymotion-k)
 
 
 
-" Utilsnips settings
-"inoremap <silent><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-"let g:UltiSnipsExpandTrigger="<tab>"
-"let g:UltiSnipsJumpForwardTrigger="<tab>"
-"let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-noremap <Leader>s :update<CR>
-
 let g:gtfo#terminals = { 'unix' : 'urxvt' }
 
 :vmap ,x :!tidy -q -i --show-errors 0<CR>
@@ -423,6 +370,7 @@ au FileType python setlocal formatprg=autopep8\ -
 autocmd FileType python noremap <Leader>i gggqG
 autocmd Filetype c,cpp noremap <Leader>i :ClangFormat<CR>
 au BufNewFile,BufRead *.html set filetype=htmldjango
+autocmd FileType htmldjango noremap <Leader>i gg=G
 
 " file is large from 10mb
 let g:LargeFile = 1024 * 1024 * 10
