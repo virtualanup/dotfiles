@@ -137,6 +137,7 @@ call plug#begin('~/.vim/plugged')
 "Color schemes
 Plug 'morhetz/gruvbox'
 
+Plug 'othree/html5.vim'
 " File management
 Plug 'scrooloose/nerdtree'
 " {{{
@@ -169,6 +170,10 @@ Plug 'rhysd/clever-f.vim'
     let g:clever_f_across_no_line = 1
 " }}}
 
+Plug 'terryma/vim-multiple-cursors'
+" {{{
+    let g:multi_cursor_exit_from_visual_mode = 0
+" }}}
 
 Plug 'ntpeters/vim-better-whitespace'
 " {{{
@@ -359,7 +364,7 @@ map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
 
-
+noremap <Leader>s :update<CR>
 let g:gtfo#terminals = { 'unix' : 'urxvt' }
 
 :vmap ,x :!tidy -q -i --show-errors 0<CR>
