@@ -137,7 +137,8 @@ call plug#begin('~/.vim/plugged')
 "Color schemes
 Plug 'morhetz/gruvbox'
 
-Plug 'othree/html5.vim'
+Plug 'sheerun/vim-polyglot'
+
 " File management
 Plug 'scrooloose/nerdtree'
 " {{{

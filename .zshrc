@@ -104,6 +104,7 @@ alias cat="ccat"
 
 alias vi="nvim"
 alias vim="nvim"
+alias co="git checkout"
 
 if [ -e /usr/bin/python3 ]
 then
