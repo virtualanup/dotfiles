@@ -100,7 +100,6 @@ bindkey jk vi-cmd-mode
 alias rg="ranger"
 
 alias vi="nvim"
-alias vim="nvim"
 
 if [ -e /usr/bin/python3 ]
 then
@@ -125,7 +124,7 @@ then
 fi
 
 
-[ -f ~/.localzshrc ] && source ~/.localzshrc || true
+[ -f ~/.localzshrc ] && source ~/.localzshrc
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -134,3 +133,55 @@ if hash antibody 2>/dev/null; then
     source <(antibody init)
     antibody bundle < ~/.config/zsh/.zsh_plugins
 fi
+
+#if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+#    ssh-agent > ~/.config/.ssh-agent-thing
+#    # Don't echo anything
+#    head -n 2 ~/.config/.ssh-agent-thing > ~/.config/.ssh-agent-thing.tmp
+#    mv ~/.config/.ssh-agent-thing.tmp ~/.config/.ssh-agent-thing
+
+#fi
+#if [[ ! "$SSH_AUTH_SOCK" ]]; then
+#    eval "$(<~/.config/.ssh-agent-thing)"
+#fi
+#
+
+function attach-or-create-tmux-session() {
+    local project_path=$1
+
+    # Obtain the session name to use
+    local name=$(basename $project_path)
+
+    # Check if session exists-stores status in exit code
+    tmux has-session -t $name
+    local tmux_status=$?
+
+    # Attach and return if the session is present
+    if [ "${tmux_status}" = "0" ]; then
+        echo "Session found"
+        tmux attach-session -t $name
+        return
+    fi
+
+    # Create new session
+    tmux new-session -d -c $project_path -s $name
+    tmux send-keys "nvim -S ~/.vim_sessions/${name}" C-m
+    tmux rename-window -t $name:1 'nvim'
+
+    # Open zsh windows
+    tmux new-window -a -c $project_path -t $name:1 -n "zsh1"
+    tmux new-window -a -c $project_path -t $name:2 -n "zsh2"
+
+    # Open ranger
+    tmux new-window -a -c $project_path -t $name:3 -n "ranger"
+    tmux send-keys "ranger" C-m
+
+    # Focus on editor window
+    tmux select-window -t $name:1
+
+    # Attach the tmux session created
+    tmux attach-session -t $name
+}
+
+
+alias tmuxf="attach-or-create-tmux-session"

@@ -4,6 +4,14 @@
 
 filetype plugin indent on
 
+" Hide toolbar and menubar in gvim
+if has('nvim')
+    " neovim based settings
+else
+    :set guioptions -=m
+    :set guioptions -=T
+endif
+
 " python3 host program
 let g:python3_host_prog = '/usr/bin/python3'
 
@@ -72,7 +80,8 @@ set matchpairs+=<:>
 " PEP-8 Friendly
 au FileType py set textwidth=79
 
-set guifont=Monaco:h13
+set guifont=Monaco\ 9
+
 " No extra spaces between rows
 set linespace=0
 
