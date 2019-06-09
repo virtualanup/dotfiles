@@ -98,8 +98,13 @@ bindkey '^r' history-incremental-search-backward
 bindkey jk vi-cmd-mode
 
 alias rg="ranger"
+alias tls="tmux ls"
+alias tat="tmux attach -t "
+alias cat="ccat"
 
 alias vi="nvim"
+alias vim="nvim"
+alias co="git checkout"
 
 if [ -e /usr/bin/python3 ]
 then
