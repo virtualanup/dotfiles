@@ -103,6 +103,7 @@ alias tat="tmux attach -t "
 alias cat="ccat"
 
 alias vi="nvim"
+alias gs="git status"
 alias vim="nvim"
 alias co="git checkout"
 
