@@ -100,7 +100,7 @@ bindkey jk vi-cmd-mode
 alias rg="ranger"
 alias tls="tmux ls"
 alias tat="tmux attach -t "
-alias cat="ccat"
+alias zshrc="vim ~/.zshrc && source ~/.zshrc"
 
 alias vi="nvim"
 alias gs="git status"
@@ -191,3 +191,4 @@ function attach-or-create-tmux-session() {
 
 
 alias tmuxf="attach-or-create-tmux-session"
+alias mt="make test"
