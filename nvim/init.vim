@@ -405,3 +405,8 @@ function LargeFile()
  " display message
  autocmd VimEnter *  echo "The file is larger than " . (g:LargeFile / 1024 / 1024) . " MB, so some options are changed (see .vimrc for details)."
 endfunction
+
+" Tab functions
+nnoremap tn  :tabnew<CR>
+nnoremap th  :tabprev<CR>
+nnoremap tl  :tabnext<CR>
