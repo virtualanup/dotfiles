@@ -5,6 +5,10 @@ set -eu -o pipefail
 DIR="$(cd "$(dirname "$0")"; pwd)"
 echo $DIR
 
+install_tmux_config() {
+    echo "Installing config file"
+}
+
 if uname -a | grep -qi 'Ubuntu'; then
     echo "Ubuntu detected"
 
@@ -72,3 +76,6 @@ if uname -a | grep -qi 'ARCH'; then
     sudo pacman -S --noconfirm tmux
 
 fi
+
+install_tmux_config
+
