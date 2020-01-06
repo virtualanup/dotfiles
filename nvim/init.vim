@@ -154,10 +154,10 @@ Plug 'scrooloose/nerdtree'
     map <C-e> :NERDTreeToggle<CR>
 " }}}
 
-Plug 'vim-scripts/sessionman.vim'
+Plug 'tpope/vim-obsession'
 " {{{
-    cabbrev so SessionOpen
-    cabbrev ss SessionSave
+    "cabbrev so SessionOpen
+    "cabbrev ss SessionSave
 " }}}
 
 

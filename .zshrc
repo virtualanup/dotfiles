@@ -152,6 +152,8 @@ fi
 #fi
 #
 
+export PATH="/home/tobi/.gem/ruby/2.6.0/bin:$PATH"
+
 function attach-or-create-tmux-session() {
     local project_path=$1
 
@@ -192,6 +194,7 @@ function attach-or-create-tmux-session() {
 
 alias tmuxf="attach-or-create-tmux-session"
 alias mt="make test"
+alias mux="tmuxinator"
 
 setopt EXTENDED_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
